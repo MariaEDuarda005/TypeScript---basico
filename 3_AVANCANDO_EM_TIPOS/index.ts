@@ -87,4 +87,59 @@ function advancedGreeting(firstName:string, lastName?:string){
 
 console.log(advancedGreeting("Maria", "Eduarda"))
 console.log(advancedGreeting("Marcela"))
+console.log(advancedGreeting("Guilherme"))
 
+// 10 - unique type 
+function showBalance(balance: string | number){
+    console.log(`O saldo da conta é R${balance}`)
+}
+
+// funciona tanto com num como com string, aceita mais dados
+showBalance(100)
+showBalance("200")
+//showBalance(true) - Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
+
+const arr2: Array <number | string | boolean> = [1, "teste", true]
+
+// 11 - AVANÇANDO EM UNION TYPES
+function showUserRole(role: boolean | string){
+    if (typeof role === "boolean"){
+        return "Usuario não aprovado"
+    }
+    return `A função do usuario é ${role}`
+}
+
+console.log(showUserRole(false))
+console.log(showUserRole("Admin"))
+
+// 12 - TYPE ALIAS
+type ID =  string | number
+
+// automaticamente compila
+function showID(id: ID){
+    console.log(`O ID é: ${id}`)
+}
+
+showID(5)
+showID("15")
+
+// 13 - INTERFACE
+// abre e fecha chaves e declara a propriedade
+interface Point{
+    x: number
+    y: number
+    z: number
+}
+
+// function showcoord(obj: {x:number, y:number, z: number}) - jeito mais complicado
+function showCoords(obj: Point){
+    console.log(`X: ${obj.x} Y: ${obj.y} Z: ${obj.z}`)
+}
+
+const coordObj:Point = {
+    x: 10,
+    y: 15,
+    z: 20
+}
+
+showCoords(coordObj)

@@ -64,3 +64,38 @@ function advancedGreeting(firstName, lastName) {
 }
 console.log(advancedGreeting("Maria", "Eduarda"));
 console.log(advancedGreeting("Marcela"));
+console.log(advancedGreeting("Guilherme"));
+// 10 - unique type 
+function showBalance(balance) {
+    console.log(`O saldo da conta é R${balance}`);
+}
+// funciona tanto com num como com string, aceita mais dados
+showBalance(100);
+showBalance("200");
+//showBalance(true) - Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
+const arr2 = [1, "teste", true];
+// 11 - AVANÇANDO EM UNION TYPES
+function showUserRole(role) {
+    if (typeof role === "boolean") {
+        return "Usuario não aprovado";
+    }
+    return `A função do usuario é ${role}`;
+}
+console.log(showUserRole(false));
+console.log(showUserRole("Admin"));
+// automaticamente compila
+function showID(id) {
+    console.log(`O ID é: ${id}`);
+}
+showID(5);
+showID("15");
+// function showcoord(obj: {x:number, y:number, z: number}) - jeito mais complicado
+function showCoords(obj) {
+    console.log(`X: ${obj.x} Y: ${obj.y} Z: ${obj.z}`);
+}
+const coordObj = {
+    x: 10,
+    y: 15,
+    z: 20
+};
+showCoords(coordObj);
