@@ -143,3 +143,55 @@ const coordObj:Point = {
 }
 
 showCoords(coordObj)
+
+// 14 - interface x type alias
+interface Person {
+    name: string
+}
+interface Person {
+    age: number
+}
+
+const somePerson: Person = {name: "Maria", age: 19}
+console.log(somePerson)
+
+type personType = {
+    name: string
+}
+
+// type personType = {
+//     age: number
+// } - Duplicate identifier 'personType'.
+// quando é type não podemos modificar, como se type fosse uma constante e a interface fosse um let que podemos modeficar
+// quando procuramos modificar usamos a INTERFACE
+
+// 15 - literal types
+let test: "testando"
+test = "testando"
+console.log(test)
+
+function showDirection(direction: "left" | "right" | "center"){
+    console.log(`A direção é: ${direction}`)
+}
+
+showDirection("left")
+// showDirection("top") - Argument of type '"top"' is not assignable to parameter of type '"left" | "right" | "center"'.
+
+// 16 - non null assertion operators
+const p = document.getElementById("some-p")
+
+//console.log(p.innerHTML) - p' is possibly 'null'.
+console.log(p!.innerHTML) // colocando a ! automaticamente valida o erro, usa quando tem um elemento do DOM e quer identificar ele no typescript, para fazer uma manipulação
+
+// 17 - Bigint
+// n = 1000n - BigInt literals are not available when targeting lower than ES2020.
+let n: bigint
+n = 1000n
+console.log(n)
+
+// 18 - symbol - valores unicos
+let symbolA:symbol = Symbol("a") 
+let symbolB = Symbol("a")
+
+console.log(symbolA == symbolB)
+console.log(symbolA === symbolB) // maneira mais correta pois verifica o tipo
