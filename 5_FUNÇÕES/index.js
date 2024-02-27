@@ -29,10 +29,7 @@ function firstElement(arr) {
 console.log(firstElement([1, 2, 3]));
 console.log(firstElement(["a", "b", "c"]));
 function mergeObjects(obj1, obj2) {
-    return {
-        ...obj1,
-        ...obj2
-    };
+    return Object.assign(Object.assign({}, obj1), obj2);
 }
 const newObject = mergeObjects({ name: "Matheus" }, { age: 30, job: "Programmer" });
 console.log(newObject);
