@@ -255,3 +255,97 @@ const fInstance = new F()
 fInstance.showX()
 fInstance.showprotectedMethod()
 // console.log(fInstance.x) - Property 'x' is protected and only accessible within class 'E' and its subclasses.
+
+// 13 - Visibilidade (PRIVATE)
+class PrivateClass {
+    private name = "Private"
+
+    showName(){
+        return this.name
+    }
+
+
+    private privateMethod() {
+        console.log("Metodo privado")
+    }
+
+    showprivateMethod(){
+        this.privateMethod()
+    }
+}
+
+const pObj = new PrivateClass()
+
+//console.log(pObj.name) - Property 'name' is private and only accessible within class 'PrivateClass'
+//console.log(pObj.privateMethod()) - Property 'privateMethod' is private and only accessible within class 'PrivateClass'
+
+console.log(pObj.showName())
+console.log(pObj.showprivateMethod())
+
+// class TestingPrivate extends PrivateClass{
+//     myMethod(){
+//         this.privateMethod()
+//     }
+// } - não como acessar por sub classes, apenas pela propria classe
+
+// 14 - Static members - PROPORCIONA ACESSO A ELA SEM CRIAR NOVOS OBJETOS
+class StaticMembers {
+    static prop = "Teste static"
+
+    static staticMethod(){
+        console.log("Esse é um metodo estatico")
+    }
+}
+
+console.log(StaticMembers.prop)
+StaticMembers.staticMethod()
+
+// 15 - Generic Class 
+class Item <T, U> {
+    first
+    second
+
+    constructor(first:T, second:U){
+        this.first = first
+        this.second = second
+    }
+
+    get showFirst() {
+        return `O first é: ${this.first}`
+    }
+}
+
+const newItem = new Item("caixa", "supresa")
+console.log(newItem)
+console.log(newItem.showFirst)
+console.log(typeof newItem.showFirst)
+
+const secondItem = new Item(12,true)
+console.log(secondItem.showFirst)
+console.log(typeof secondItem.first)
+
+// 16 - Parameter properties
+class ParameterProperties {
+    constructor (public name:string, private qty:number, private price:number){
+        this.name = name
+        this.qty = qty
+        this.price = price
+    }
+
+    get showQty() {
+        return `Quantidade total é: ${this.qty}`
+    }
+    get showPrice() {
+        return `O preço total é: ${this.price}`
+    }
+}
+
+const newShirt = new ParameterProperties("Camisa", 5, 19.99)
+
+console.log(newShirt.name)
+
+console.log(newShirt.showPrice)
+console.log(newShirt.showQty)
+//console.log(newShirt.price) - Property 'price' is private and only accessible within class 'ParameterProperties'.
+
+// 17 - Class expressions
