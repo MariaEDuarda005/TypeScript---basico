@@ -348,4 +348,50 @@ console.log(newShirt.showPrice)
 console.log(newShirt.showQty)
 //console.log(newShirt.price) - Property 'price' is private and only accessible within class 'ParameterProperties'.
 
-// 17 - Class expressions
+// 17 - Class expressions - serve para criar uma classe anonima
+const myClass = class<T>{
+    name 
+
+    constructor(name:T){
+        this.name = name
+    }
+}
+
+const pessoa = new myClass("Maria")
+console.log(pessoa)
+
+// 18 - Abstract class 
+abstract class AbstractClass {
+    abstract showName(): void;
+}
+
+//const newObj = new AbstractClass() - Cannot create an instance of an abstract class.
+
+class AbstractExample extends AbstractClass {
+    name: string
+
+    constructor(name:string) {
+        super();
+        this.name = name
+    }
+
+    showName() {
+        console.log("O nome é " + this.name)
+    }
+}
+
+const newAbstractObject = new AbstractExample("Maria")
+console.log(newAbstractObject)
+
+// 19 - Relação entre classes
+class Dog {
+    name!: string
+}
+
+class Cat {
+    name!: string
+}
+
+// ele verifica o que esta dentro, por isso que é completamente possivel fazer isso
+const doguinho: Dog = new Cat()
+console.log(doguinho)
