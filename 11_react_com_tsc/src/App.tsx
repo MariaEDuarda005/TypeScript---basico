@@ -2,6 +2,8 @@ import React from 'react';
 
 function App() {
 
+  // importaçao de componentes
+
   // 1 - variaveis
   const name: string = "Maria"
   const age: number = 19
