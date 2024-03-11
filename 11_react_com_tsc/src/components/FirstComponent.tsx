@@ -16,7 +16,7 @@ export default FirstComponent*/
 function FirstComponent(): ReactElement {
     return (
         <div>
-            <h1>Meu Primeira componente</h1>
+            <h1>Meu primeiro componente</h1>
         </div>
     )
 }
