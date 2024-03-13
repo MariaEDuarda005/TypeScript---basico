@@ -11,7 +11,8 @@ interface Props {
     taskList: ITask[]
     setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>> // alterando o state de uma lista, e deixando opicional com "?"
     task?: ITask | null
-    handleUpdate?(): null
+    // quando forçar o retorno a nada é void e não null
+    handleUpdate?(id: number, title: string, difficulty: number): void
 }
 
 const TaskForm = ({btnText, taskList, setTaskList, task, handleUpdate}:Props) => {
@@ -34,7 +35,7 @@ const TaskForm = ({btnText, taskList, setTaskList, task, handleUpdate}:Props) =>
         //enviar sem recarregar a tela
         e.preventDefault();
         if(handleUpdate){
-            console.log(handleUpdate)
+            handleUpdate(id,title,difficulty)
         }else{
             const id = Math.floor(Math.random()*1000) 
             const newTask: ITask = {id, title, difficulty}

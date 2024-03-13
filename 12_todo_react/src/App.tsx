@@ -38,13 +38,25 @@ function App() {
     setTaskToUpdate(task);
   }
 
-  const updateTask = (id: number, title: string, difficulty: number){
+  const updateTask = (id: number, title: string, difficulty: number) => {
     const updatedTask: ITask = {id,title,difficulty}
+
+    // atualização do item atraves do map
+    const updatedItems = taskList.map((task) => {
+      // verifica cada tarefa, quando ele achar a tarefa, ele troca as informações pela tarefa atualizada, se não for continua a mesma 
+      return task.id === updatedTask.id ? updatedTask : task
+    })
+
+    // atualiza a lista para exibir a nova tarefa atualizada
+    setTaskList(updatedItems)
+
+    hideOrShowModal(false)
+
   }
 
   return (
     <div>
-      <Modal children={<TaskForm btnText='editar tarefa' taskList={taskList}  task={taskToUpdate}/>}/>
+      <Modal children={<TaskForm btnText='editar tarefa' taskList={taskList}  task={taskToUpdate} handleUpdate={updateTask}/>}/>
       <Header/>
       <main className={styles.main}>
         <div>
